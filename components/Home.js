@@ -1,6 +1,31 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { Container, Header, Left, Body, Title, Icon, Button, Content, Form, Item, Input, Picker, Grid, Row, Col } from 'native-base';
+
+const activities = [
+    {
+      value: 1.2,
+      text: "Brak aktywności, praca siedząca"
+    },
+    {
+      value: 1.3,
+      text: "Niska aktywność (praca siedząca, 1-2 treningi w tygodniu)"
+    },
+    {
+      value: 1.5,
+      text: "Średnia aktywność (praca siedząca, 3-4 treningi w tygodniu)"
+    },
+    {
+      value: 1.7,
+      text: "Wysoka aktywność (praca fizyczna, 3-4 treningi w tygodniu)"
+    },
+    {
+      value: 1.9,
+      text:
+        "Bardzo wysoka aktywność (zawodowi sportowcy, osoby codziennie trenujące"
+    }
+  ];
+
 export default function Home({ navigation }) {
     return (
         <Container>
@@ -65,7 +90,7 @@ export default function Home({ navigation }) {
                         </Row>
                         <Row>
                             <Col size={1} style={styles.flexCol}>
-                                <Text style={styles.formText}>Płeć</Text>
+                                <Text style={styles.formText}>Aktywność</Text>
                             </Col>
                             <Col size={3}>
                                 <Item picker>
@@ -73,8 +98,11 @@ export default function Home({ navigation }) {
                                         placeholder="Aktywność"
                                         placeholderStyle={{ color: "#bfc6ea" }}
                                         placeholderIconColor="#007aff">
-                                        <Picker.Item label="Mężczyzna" value="5" />
-                                        <Picker.Item label="Kobieta" value="-161" />
+
+                                            {activities.forEach(element => (
+                                                <Picker.Item label={element.text} value={element.value}
+                                                key={element.value} />
+                                            ))}
                                     </Picker>
                                 </Item>
                             </Col>
